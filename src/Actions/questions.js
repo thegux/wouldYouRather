@@ -1,4 +1,4 @@
-import {saveQuestion, saveQuestionAnswer} from '../utils/api'
+import {saveQuestion, saveQuestionAnswer} from '../Utils/api'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
 export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
@@ -33,8 +33,7 @@ function questionAnswer({authedUser, qid, answer }){
 
 //Actions to be used with thunk
 export function handleAddQuestion(question){
-  return (dispatch, getState) => {
-    const authedUser = getState()
+  return (dispatch) => {
     return saveQuestion(question)
               .then((question) => dispatch(addQuestion(question)))
   }
