@@ -80,4 +80,13 @@ export const StyledLoginProfile = styled.div`
         box-shadow:none;
     }
 
+    .dropdown-item {
+        img{
+            width:30px;
+            height:30px;
+            border-radius:15px;
+            margin-right: 10px;
+        }
+    }
+
 `;

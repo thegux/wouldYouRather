@@ -8,6 +8,7 @@ export const StyledBoard = styled.div`
     padding-bottom: 1%;
     margin-right:2%;
     margin-left:2%;
+    margin-bottom:3%;
     border-radius:15px;
 
     h3, h4{
@@ -24,6 +25,7 @@ export const StyledBoard = styled.div`
     }
 
     div{
+        width:100%;
         margin: auto;
         flex-grow: 1;
     }

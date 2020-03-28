@@ -12,20 +12,20 @@ class Question extends Component {
             <StyledQuestion>
 
                     <StyledQuestionAuthor>
-                        Sara Edo asks..
+                        {this.props.author} asks..
                     </StyledQuestionAuthor>
 
                  
                 <StyledQuestionContent>
 
                     <img 
-                        src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                        alt="React + Redux Logo"/>
+                        src={this.props.authorAvatar} 
+                        alt={this.props.author + ' logo'}/>
 
 
                         <StyledQuestionText>
                             <h5>Would you rather</h5>
-                            <p>...write a book...</p>
+                            <p>...{this.props.option}...</p>
                             <NavLink to="/in/poll"><Button>View Poll</Button></NavLink>
                         </StyledQuestionText>
 

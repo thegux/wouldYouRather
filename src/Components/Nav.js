@@ -1,32 +1,61 @@
-import React, {Component} from 'react'
-import {Nav, NavItem} from 'react-bootstrap'
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {Nav} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
-export default function NavComponent () {
-    return (
+class NavComponent extends Component {
+
+  render(){
+    
+      return (
         <Nav activeKey="/home" className="justify-content-end">
-        <Nav.Item>
-          <Nav.Link href="/in/home">Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/in/newQuestion">New Question</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/in/leaderBoard">Leader Board</Nav.Link>
-        </Nav.Item>
-        <NavItem>
-            <p style={{marginLeft: '20px', marginTop: '8px'}}>
+          
+        {this.props.loggedUser &&
 
-                    <img style={{width:'30px', height:'30px', borderRadius: '15px', marginRight: '10px'}}
-                    src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                    alt="React + Redux Logo"/>
+        <Fragment>
 
-                    Hi, Tyler McGynnis</p>
-        </NavItem>
-        <Nav.Item>
-          <Nav.Link href="/">
-            Logout
-          </Nav.Link>
-        </Nav.Item>
+          <Nav.Item>
+            <Link to={'/'+ this.props.loggedUser.id +'/home'}>Home</Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Link to={'/'+ this.props.loggedUser.id +'/newQuestion'}>New Question</Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Link to={'/'+ this.props.loggedUser.id +'/leaderBoard'}>Leader Board</Link>
+          </Nav.Item>
+
+          <Nav.Item>
+              <p>
+
+                      <img style={{width:'30px', height:'30px', borderRadius: '15px', marginRight: '10px'}}
+                      src={this.props.loggedUser.avatarURL} 
+                      alt={this.props.loggedUser.name + ' logo'}/>
+
+                      Hi, {this.props.loggedUser.name}</p>
+          </Nav.Item>
+
+          <Nav.Item>
+            <Link to="/">Logout</Link>
+          </Nav.Item>
+
+        </Fragment>   
+  }
       </Nav>
     )
+ 
+  
+    }
+
+
 }
+
+function mapStateToProps({users, authedUser}){
+  const usersArray = Object.keys(users).map((u) => users[u])
+  const loggedUser = usersArray.filter((u) => u.id === authedUser)[0]
+  return {loggedUser}
+}
+
+
+export default connect(mapStateToProps)(NavComponent)

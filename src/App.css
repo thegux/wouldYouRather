@@ -33,3 +33,9 @@
 .container-fluid{
     padding-bottom: 2%;
 }
+
+.justify-content-end .nav-item{
+    margin-top: 8px;
+    margin-left: 20px;
+
+}

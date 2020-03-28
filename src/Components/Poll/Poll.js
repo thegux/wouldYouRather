@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {StyledPoll, StyledPollContent,
         StyledPollResult, StyledChoice} from './StyledPoll'
 
 class Poll extends Component {
+
     render(){
+
         return(
                 <StyledPoll>
 
@@ -35,6 +38,10 @@ class Poll extends Component {
                 </StyledPoll>
         )
     }
+}
+
+function mapStateToProps(){
+
 }
 
 export default Poll

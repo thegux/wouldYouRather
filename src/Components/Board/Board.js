@@ -6,20 +6,20 @@ export default class Board extends Component {
         return(
             <StyledBoard>
                     <img 
-                            src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                            alt="React + Redux Logo"/>
+                            src={this.props.userAvatar} 
+                            alt={this.props.name + ' avatar'}/>
 
                     <div>
-                        <h3>Sarah Edo</h3>
+                        <h3>{this.props.name}</h3>
                     </div>
 
                     <div>
-                        Ansered Questions: 5 <br/>
-                        Created Questions: 6
+                        Answered Questions: {this.props.answered} <br/>
+                        Created Questions: {this.props.created}
                     </div>
 
                      <div>
-                            <h4>Score: 5</h4>
+                            <h4>Score: {this.props.answered}</h4>
                     </div>                            
             </StyledBoard>
         )
