@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {StyledNewQuestion} from './StyledNewQuestion'
 import {Link} from 'react-router-dom'
+import { handleAddQuestion } from '../../Actions/shared'
+
 
 class NewQuestion extends Component {
 
@@ -19,6 +21,10 @@ class NewQuestion extends Component {
         this.setState(() => ({option2}))
     }
 
+    saveQuestion(option1, option2){
+        const question = {optionOneText: option1, optionTwoText: option2, author: this.props.authedUser}
+        this.props.dispatch(handleAddQuestion(question))
+    }
 
     render(){
         return(
@@ -42,8 +48,8 @@ class NewQuestion extends Component {
                            onChange={(e) => this.handleOptionTwo(e.target.value)}
                            placeholder="Type second option's text here"/>
 
-                    <Link to={'/'+ this.props.authedUser + '/home'}>
-                        <Button onClick={this.props.saveQuestion(this.state.option1, this.state.option2)}>
+                    <Link to='/home'>
+                        <Button onClick={() => this.saveQuestion(this.state.option1, this.state.option2)}>
                             Submit
                         </Button>
                     </Link>
