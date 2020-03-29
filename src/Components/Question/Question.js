@@ -26,7 +26,7 @@ class Question extends Component {
                         <StyledQuestionText>
                             <h5>Would you rather</h5>
                             <p>...{this.props.option}...</p>
-                            <NavLink to="/in/poll"><Button>View Poll</Button></NavLink>
+                            <NavLink to={"/questions/" + this.props.id}><Button>View Poll</Button></NavLink>
                         </StyledQuestionText>
 
                         
