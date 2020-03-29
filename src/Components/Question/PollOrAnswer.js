@@ -10,7 +10,7 @@ class PollOrAnswer extends Component {
             <div>
             {this.props.error ?
                 this.props.history.push('/error')
-            : 
+            :
             <div>
                 {this.props.questionAnswered ?
                     <Poll
@@ -23,7 +23,7 @@ class PollOrAnswer extends Component {
                         optionOne={this.props.question.optionOne.text}
                         optionTwo={this.props.question.optionTwo.text}/>
                     :
-                <QuestionToAnswer 
+                <QuestionToAnswer
                     qid={this.props.question.id}
                     userAvatar={this.props.user.avatarURL}
                     userName={this.props.user.name}
@@ -41,19 +41,19 @@ class PollOrAnswer extends Component {
 function mapStateToProps({authedUser, questions, users}, props) {
     const questionID = props.match.params.question_id
     const question = Object.keys(questions).map((q) => questions[q]).filter((q) => q.id === questionID)[0]
-    
+
     if (question){
 
     const total = question.optionOne.votes.length + question.optionTwo.votes.length;
     const user = Object.keys(users).map((u) => users[u]).filter((u) => u.id === question.author)[0]
     let questionAnswered = false
 
-        if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){ 
-            
+        if(question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)){
+
             questionAnswered = true
             let choice;
             {question.optionOne.votes.includes(authedUser) ? choice = 'optionOne' :  choice = 'optionTwo'}
-            if(total > 0){
+
                 return{
                     question,
                     questionAnswered,
@@ -61,19 +61,18 @@ function mapStateToProps({authedUser, questions, users}, props) {
                     total,
                     choice
                 }
-            } else {return {error: true}} 
-        
-        }    
-            
+            } else {return {error: true}}
+
+
             return{
                 question,
                 questionAnswered,
                 user,
             }
 
-            
 
-    } else {return {error: true}} 
+
+    } else {return {error: true}}
 
 }
 
