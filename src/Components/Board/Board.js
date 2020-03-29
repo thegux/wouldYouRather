@@ -19,7 +19,7 @@ export default class Board extends Component {
                     </div>
 
                      <div>
-                            <h4>Score: {this.props.answered}</h4>
+                            <h4>Score: {this.props.answered + this.props.created}</h4>
                     </div>                            
             </StyledBoard>
         )
