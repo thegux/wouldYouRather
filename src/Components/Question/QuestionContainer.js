@@ -60,9 +60,8 @@ class QuestionContainer extends Component {
 function mapStateToProps({authedUser, questions, users}){
     const question = Object.keys(questions).map((q) => questions[q])
     const user = Object.keys(users).map((u) => users[u])
-    const qU = question.filter((q) => !q.optionOne.votes.includes(authedUser) & !q.optionTwo.votes.includes(authedUser))
-    const qA = question.filter((q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser))
-    
+    const qU = question.filter((q) => !q.optionOne.votes.includes(authedUser) & !q.optionTwo.votes.includes(authedUser)).sort((a, b) => b.timestamp - a.timestamp)
+    const qA = question.filter((q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)).sort((a, b) => b.timestamp - a.timestamp)
     return {
         authedUser,
         qU,
