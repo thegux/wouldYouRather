@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const StyledLogin = styled.div`
     padding:2%;
     
@@ -26,11 +27,6 @@ export const StyledLoginItem = styled.div`
         margin-top:3%;
         margin-bottom:2%;
     }
-
-    Dropdown{
-        background-color:'blue';
-    }
-
     Button {
         width:70vmin;
         margin-top:3%;
