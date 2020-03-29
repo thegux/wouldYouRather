@@ -12,12 +12,13 @@ export default function questions(state={}, action){
             ...state, [action.question.id]: action.question
           }
       case SAVE_QUESTION_ANSWER:
-          const answer = action.answer
           return {
             ...state, [action.qid]: {
-              ...state[action.qid], answer: answer.concat([action.authedUser])
+              ...state[action.qid], [action.answer]: {...state[action.qid][action.answer],
+                 votes: state[action.qid][action.answer].votes.concat([action.authedUser])}
             }
           }
+          
       default:
           return state
 
