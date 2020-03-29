@@ -1,41 +1,77 @@
 import React, {Component} from 'react'
 import { StyledQuestion, StyledQuestionAuthor, StyledQuestionContent, StyledQuestionText } from './StyledQuestion'
 import {Form, Button, Row, Col} from 'react-bootstrap'
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import { handleQuestionAnswer } from '../../Actions/shared'
 
-export default class QuestionToAnswer extends Component {
+
+class QuestionToAnswer extends Component {
+
+    constructor(props){
+        super(props)
+        this.handleAnswer = this.handleAnswer.bind(this)
+        this.saveQuestionAnswer = this.saveQuestionAnswer.bind(this)
+        this.style={
+            option: '',
+        }
+    }
+
+
+    handleAnswer(option){
+        this.setState(() => ({option}))
+    }
+
+    saveQuestionAnswer(){
+        const authedUser = this.props.authedUser
+        const qid = this.props.qid
+        const answer = this.state.option
+        const info = {authedUser, qid, answer}
+        this.props.dispatch(handleQuestionAnswer(info))
+    }
+
     render(){
         return(
             <StyledQuestion>
                 <StyledQuestionAuthor>
-                    Sara Edo asks..
+                    {this.props.userName} asks..
                 </StyledQuestionAuthor>
 
                 <StyledQuestionContent>
                         <img 
-                        src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                        alt="React + Redux Logo"/>
+                        src={this.props.userAvatar}
+                        alt={this.props.userName + 'picture'}/>
 
                     <StyledQuestionText>
                         <h4>Would you rather?</h4>
-                        <Form.Group as={Row}>
-                        <Col sm={10}>
-                            <Form.Check
-                            type="radio"
-                            label="first radio"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios1"
-                            />
-                            <Form.Check
-                            type="radio"
-                            label="second radio"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios2"
-                            />
-                        </Col>
-                        </Form.Group>
+                        <Form>
 
-                            <NavLink to="/in/poll"><Button>View Poll</Button></NavLink>
+                            <Form.Group as={Row}>
+
+                            <Col sm={10}>
+                                <Form.Check
+                                type="radio"
+                                label={this.props.optionOne}
+                                name="formHorizontalRadios"
+                                id="optionOne"
+                                onChange={() => this.handleAnswer('optionOne')}
+                                />
+                                <Form.Check
+                                type="radio"
+                                label={this.props.optionTwo}
+                                name="formHorizontalRadios"
+                                id="optionTwo"
+                                onChange={() => this.handleAnswer('optionTwo')}
+                                />
+                            </Col>
+                            
+                            </Form.Group>
+
+                            <Link to={'/questions/'+ this.props.qid}><Button onClick={this.saveQuestionAnswer}>Vote</Button></Link>
+
+                        </Form>
+
+                            
                     </StyledQuestionText>
                     
                 </StyledQuestionContent>
@@ -44,3 +80,12 @@ export default class QuestionToAnswer extends Component {
         )
     }
 }
+
+function mapStateToProps({authedUser}){
+    return{
+        authedUser
+    }
+}
+
+
+export default connect(mapStateToProps)(QuestionToAnswer)
