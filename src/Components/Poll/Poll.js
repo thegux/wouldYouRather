@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import {StyledPoll, StyledPollContent,
         StyledPollResult, StyledChoice} from './StyledPoll'
@@ -7,41 +6,41 @@ import {StyledPoll, StyledPollContent,
 class Poll extends Component {
 
     render(){
-
         return(
                 <StyledPoll>
 
                     <img 
-                            src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                            alt="React + Redux Logo"/>
+                            src={this.props.userAvatar} 
+                            alt={this.props.userName + 'picture'}/>
 
                         <StyledPollContent> 
                             <h4>Results</h4> 
                             
                             <StyledPollResult>
-                                <h6>Would you rather do that?</h6>
-                                <ProgressBar now={60} style={{marginLeft: '5%', marginRight: '5%'}}/>
-                                <p>2 out of 3 votes</p>
+                                <h6>Would you rather {this.props.optionOne}?</h6>
+                                <ProgressBar now={(this.props.votesOne/this.props.total)*100} style={{marginLeft: '5%', marginRight: '5%'}}/>
+                                <p>{this.props.votesOne} out of {this.props.total} votes</p>
+                                {this.props.choice === 'optionOne' && <StyledChoice>Your choice</StyledChoice>}
                             </StyledPollResult>
 
                             <StyledPollResult>
                                 
-                                <h6>Would you rather do that?</h6>
-                                <ProgressBar now={60} style={{marginLeft: '5%', marginRight: '5%'}}/>
-                                <p>2 out of 3 votes</p>
-                                <StyledChoice>Your choice</StyledChoice>
+                                <h6>Would you rather {this.props.optionTwo}?</h6>
+                                <ProgressBar now={(this.props.votesTwo/this.props.total)*100} style={{marginLeft: '5%', marginRight: '5%'}}/>
+                                <p>{this.props.votesTwo} out of {this.props.total} votes</p>
+                                {this.props.choice === 'optionTwo' && <StyledChoice>Your choice</StyledChoice>}
                             </StyledPollResult>
                         
 
                         </StyledPollContent>
                         
                 </StyledPoll>
+
+                      
         )
     }
 }
 
-function mapStateToProps(){
 
-}
 
 export default Poll
