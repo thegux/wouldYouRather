@@ -5,21 +5,21 @@ export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
 
 
 //Actions
-export function receiveQuestions(questions){
+export function receiveQuestions(questions) {
     return {
         type: RECEIVE_QUESTIONS,
         questions,
     }
 }
 
-export function addQuestion(question){
+export function addQuestion(question) {
     return {
         type: ADD_QUESTION,
         question
     }
 }
 
-export function questionAnswer({authedUser, qid, answer }){
+export function questionAnswer({authedUser, qid, answer }) {
       return {
           type: SAVE_QUESTION_ANSWER,
           authedUser,
@@ -27,7 +27,3 @@ export function questionAnswer({authedUser, qid, answer }){
           answer,
       }
 }
-
-
-
-

@@ -31,8 +31,7 @@ class Login extends Component {
 
 
 
-    render(){
-        
+    render() {
         return(
 
         <StyledLogin>
@@ -46,10 +45,10 @@ class Login extends Component {
                     <p>Please sign in to continue</p>
                 </StyledLoginHeader>
 
-                <img src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png" 
-                    alt="React + Redux Logo"/>
+                    <img src="https://miro.medium.com/max/1200/1*XLPUfIkmIA01h1D0ti-wJw.png"
+                        alt="React + Redux Logo"/>
 
-                <h4>Sign in</h4>
+                    <h4>Sign in</h4>
 
                 <StyledLoginProfile>
 
@@ -58,7 +57,7 @@ class Login extends Component {
                         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                             {this.state.dropdown}
                         </Dropdown.Toggle>
-                        
+
                         <Dropdown.Menu>
 
                             {this.props.user && this.props.user.map((user) =>
@@ -67,8 +66,9 @@ class Login extends Component {
                                     onClick={() => this.handleDropdown(user)}
                                     key={user.id}>
 
-                                    <img src={user.avatar} alt="user avatar"/>
+                                    <img src={user.avatar} alt={user.name + "'s avatar"}/>
                                     {user.name}
+
                                 </Dropdown.Item>
                             )}
 
@@ -76,15 +76,15 @@ class Login extends Component {
 
                     </Dropdown>
 
-                    
+
                 </StyledLoginProfile>
 
                 <NavLink to={this.props.referrer}>
-                <Button onClick={() => this.updateUser(this.state.userID)}>Sign in</Button>
+                    <Button onClick={() => this.updateUser(this.state.userID)}>Sign in</Button>
                 </NavLink>
 
             </StyledLoginItem>
-            
+
         </StyledLogin>
 
         )
@@ -98,11 +98,10 @@ function mapStateToProps({users}, props){
     if(props.location.state){
         referrer = props.location.state.referrer
     }
-        
+
     return {
         user,
         referrer,
-        
     }
 }
 

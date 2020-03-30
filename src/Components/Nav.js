@@ -16,9 +16,10 @@ class NavComponent extends Component {
   }
 
   render(){
-    
+
       return (
         <Nav activeKey="/home" className="justify-content-end">
+
           <Nav.Item>
             <Link to={'/home'}>Home</Link>
           </Nav.Item>
@@ -30,40 +31,43 @@ class NavComponent extends Component {
           <Nav.Item>
             <Link to={'/leaderBoard'}>Leader Board</Link>
           </Nav.Item>
+
           {this.props.authedUser &&
                   <Fragment>
                     <Nav.Item>
                     <p>
-      
+
                             <img
-                            src={this.props.loggedUser.avatarURL} 
+                            src={this.props.loggedUser.avatarURL}
                             alt={this.props.loggedUser.name + ' logo'}/>
-      
+
                             Hi, {this.props.loggedUser.name}</p>
                 </Nav.Item>
-      
+
                 <Nav.Item onClick={this.handleLogOut}>
                   <Link to="/">Logout</Link>
                 </Nav.Item>
-                </Fragment>  
-            } 
+                </Fragment>
+            }
 
-      </Nav>
-    )
- 
-  
+        </Nav>
+      )
+
+
     }
 
 
 }
 
-function mapStateToProps({users, authedUser}){
+function mapStateToProps({users, authedUser}) {
   const usersArray = Object.keys(users).map((u) => users[u])
   const loggedUser = usersArray.filter((u) => u.id === authedUser)[0]
-  return { 
+
+  return {
     loggedUser,
     authedUser
   }
+  
 }
 
 

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
-import {Tabs, Tab} from 'react-bootstrap' 
+import {Tabs, Tab} from 'react-bootstrap'
 import { StyledQuestionContainer } from './StyledQuestionContainer'
 
 class QuestionContainer extends Component {
-    
+
     handleUserAvatar(id){
          return this.props.user.filter((u) => u.id === id)[0].avatarURL
     }
@@ -14,7 +14,7 @@ class QuestionContainer extends Component {
         return this.props.user.filter((u) => u.id === id)[0].name
     }
 
-    render(){
+    render() {
         return(
             <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example">
 
@@ -22,7 +22,7 @@ class QuestionContainer extends Component {
 
                     <StyledQuestionContainer>
 
-                    {this.props.qU && this.props.qU.map((q) => 
+                    {this.props.qU && this.props.qU.map((q) =>
                         <Question key={q.id}
                                   id={q.id}
                                   authorAvatar={this.handleUserAvatar(q.author)}
@@ -38,7 +38,7 @@ class QuestionContainer extends Component {
 
                     <StyledQuestionContainer>
 
-                    {this.props.qA && this.props.qA.map((q) => 
+                    {this.props.qA && this.props.qA.map((q) =>
                         <Question key={q.id}
                                   id={q.id}
                                   authorAvatar={this.handleUserAvatar(q.author)}
@@ -62,12 +62,14 @@ function mapStateToProps({authedUser, questions, users}){
     const user = Object.keys(users).map((u) => users[u])
     const qU = question.filter((q) => !q.optionOne.votes.includes(authedUser) & !q.optionTwo.votes.includes(authedUser)).sort((a, b) => b.timestamp - a.timestamp)
     const qA = question.filter((q) => q.optionOne.votes.includes(authedUser) || q.optionTwo.votes.includes(authedUser)).sort((a, b) => b.timestamp - a.timestamp)
+
     return {
         authedUser,
         qU,
         qA,
-        user   
+        user
     }
+    
 }
 
 

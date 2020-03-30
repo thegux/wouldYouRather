@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {StyledBoard} from './StyledBoard'
 
 export default class Board extends Component {
-    render(){
+
+    render() {
+
         return(
             <StyledBoard>
-                    <img 
-                            src={this.props.userAvatar} 
+
+                    <img
+                            src={this.props.userAvatar}
                             alt={this.props.name + ' avatar'}/>
 
                     <div>
@@ -19,8 +22,9 @@ export default class Board extends Component {
                     </div>
 
                      <div>
-                            <h4>Score: {this.props.answered + this.props.created}</h4>
-                    </div>                            
+                        <h4>Score: {this.props.answered + this.props.created}</h4>
+                    </div>
+
             </StyledBoard>
         )
     }

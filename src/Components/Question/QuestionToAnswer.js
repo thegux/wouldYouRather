@@ -8,7 +8,7 @@ import { handleQuestionAnswer } from '../../Actions/shared'
 
 class QuestionToAnswer extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.handleAnswer = this.handleAnswer.bind(this)
         this.saveQuestionAnswer = this.saveQuestionAnswer.bind(this)
@@ -18,21 +18,24 @@ class QuestionToAnswer extends Component {
     }
 
 
-    handleAnswer(option){
+    handleAnswer(option) {
         this.setState(() => ({option}))
     }
 
-    saveQuestionAnswer(){
+    saveQuestionAnswer() {
         const authedUser = this.props.authedUser
         const qid = this.props.qid
         const answer = this.state.option
         const info = {authedUser, qid, answer}
-        if(answer !== ''){
+
+        if(answer !== '') {
           this.props.dispatch(handleQuestionAnswer(info))
-        } else{ alert('You must choose one option')}
+        } else {
+          alert('You must choose one option')
+        }
     }
 
-    render(){
+    render() {
         return(
             <StyledQuestion>
                 <StyledQuestionAuthor>
@@ -40,7 +43,7 @@ class QuestionToAnswer extends Component {
                 </StyledQuestionAuthor>
 
                 <StyledQuestionContent>
-                        <img
+                    <img
                         src={this.props.userAvatar}
                         alt={this.props.userName + 'picture'}/>
 

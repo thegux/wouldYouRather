@@ -22,14 +22,16 @@ class NewQuestion extends Component {
 
     saveQuestion(option1, option2){
 
-        if(option1 !== '' & option2 !== ''){
-        const question = {optionOneText: option1, optionTwoText: option2, author: this.props.authedUser}
-        this.props.dispatch(handleAddQuestion(question)).then(this.props.history.push('/home'))
-      }else{ alert('You must fill both options')}
+        if(option1 !== '' & option2 !== '') {
+          const question = {optionOneText: option1, optionTwoText: option2, author: this.props.authedUser}
+          this.props.dispatch(handleAddQuestion(question)).then(this.props.history.push('/home'))
+        } else {
+          alert('You must fill both options')
+        }
 
     }
 
-    render(){
+    render() {
         return(
             <StyledNewQuestion>
 

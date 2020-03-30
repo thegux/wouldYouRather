@@ -5,7 +5,7 @@ import Poll from '../Poll/Poll'
 import {withRouter} from 'react-router-dom'
 
 class PollOrAnswer extends Component {
-    render(){
+    render() {
         return(
             <div>
             {this.props.error ?
@@ -23,12 +23,12 @@ class PollOrAnswer extends Component {
                         optionOne={this.props.question.optionOne.text}
                         optionTwo={this.props.question.optionTwo.text}/>
                     :
-                <QuestionToAnswer
-                    qid={this.props.question.id}
-                    userAvatar={this.props.user.avatarURL}
-                    userName={this.props.user.name}
-                    optionOne={this.props.question.optionOne.text}
-                    optionTwo={this.props.question.optionTwo.text}/>
+                    <QuestionToAnswer
+                        qid={this.props.question.id}
+                        userAvatar={this.props.user.avatarURL}
+                        userName={this.props.user.name}
+                        optionOne={this.props.question.optionOne.text}
+                        optionTwo={this.props.question.optionTwo.text}/>
                 }
 
                 </div>
@@ -54,7 +54,7 @@ function mapStateToProps({authedUser, questions, users}, props) {
             let choice;
             {question.optionOne.votes.includes(authedUser) ? choice = 'optionOne' :  choice = 'optionTwo'}
 
-                return{
+                return {
                     question,
                     questionAnswered,
                     user,
@@ -64,11 +64,11 @@ function mapStateToProps({authedUser, questions, users}, props) {
         }
 
 
-            return{
-                question,
-                questionAnswered,
-                user,
-            }
+        return {
+            question,
+            questionAnswered,
+            user,
+        }
 
 
 

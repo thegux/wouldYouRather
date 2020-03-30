@@ -6,33 +6,30 @@ import {StyledQuestion, StyledQuestionContent,
 
 
 class Question extends Component {
-    render(){
+    render() {
         return(
 
             <StyledQuestion>
 
-                    <StyledQuestionAuthor>
-                        {this.props.author} asks..
-                    </StyledQuestionAuthor>
+                <StyledQuestionAuthor>
+                    {this.props.author} asks..
+                </StyledQuestionAuthor>
 
-                 
                 <StyledQuestionContent>
 
-                    <img 
-                        src={this.props.authorAvatar} 
+                    <img
+                        src={this.props.authorAvatar}
                         alt={this.props.author + ' logo'}/>
 
+                    <StyledQuestionText>
+                        <h5>Would you rather</h5>
+                        <p>...{this.props.option}...</p>
+                        <NavLink to={"/questions/" + this.props.id}><Button>View Poll</Button></NavLink>
+                    </StyledQuestionText>
 
-                        <StyledQuestionText>
-                            <h5>Would you rather</h5>
-                            <p>...{this.props.option}...</p>
-                            <NavLink to={"/questions/" + this.props.id}><Button>View Poll</Button></NavLink>
-                        </StyledQuestionText>
-
-                        
                 </StyledQuestionContent>
 
-                
+
             </StyledQuestion>
         )
     }

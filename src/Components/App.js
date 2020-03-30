@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   render(){
-    
+
     return(
 
       <Router>
@@ -30,10 +30,10 @@ class App extends Component {
           <NavComponent/>
           <Switch>
 
-                    <Route exact path='/' component={Login}/>
+              <Route exact path='/' component={Login}/>
 
-                    <Route path={'/home'}>
-                      {this.props.authedUser ? <QuestionContainer/> : 
+                  <Route path={'/home'}>
+                      {this.props.authedUser ? <QuestionContainer/> :
                           <Redirect
                           to={{
                             pathname: "/",
@@ -41,11 +41,10 @@ class App extends Component {
                           }}
                         />
                       }
-                    </Route>
-                    
-                    <Route path={'/questions/:question_id' } render={(props) => 
-                    
-                        this.props.authedUser ? <PollOrAnswer {...props}/> : 
+                  </Route>
+
+                  <Route path={'/questions/:question_id' } render={(props) =>
+                        this.props.authedUser ? <PollOrAnswer {...props}/> :
                           <Redirect
                           to={{
                             pathname: "/",
@@ -54,20 +53,20 @@ class App extends Component {
                             }
                           }}
                         />
-                    }/>
+                  }/>
 
-                    <Route path={'/add'}>
-                      {this.props.authedUser ? <NewQuestion/> : 
+                  <Route path={'/add'}>
+                      {this.props.authedUser ? <NewQuestion/> :
                       <Redirect
                           to={{
                             pathname: "/",
                             state: { referrer: '/add' }
                           }}
                         />}
-                    </Route>
+                  </Route>
 
-                    <Route path={'/leaderBoard'}>
-                      {this.props.authedUser ? <LeaderBoard /> : 
+                  <Route path={'/leaderBoard'}>
+                      {this.props.authedUser ? <LeaderBoard /> :
                           <Redirect
                           to={{
                             pathname: "/",
@@ -75,10 +74,10 @@ class App extends Component {
                           }}
                         />
                       }
-                    </Route>
-                    
+                  </Route>
+
                   <Route component={Error}/>
-                    
+
           </Switch>
 
       </Container>

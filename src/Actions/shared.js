@@ -2,23 +2,26 @@ import {getInitialData} from '../Utils/api'
 import {receiveQuestions, addQuestion, questionAnswer} from './questions'
 import {receiveUsers} from './users'
 import  {saveUserAnswer, addUserQuestion} from './users'
-import {saveQuestion, saveQuestionAnswer} from '../Utils/api' 
+import {saveQuestion, saveQuestionAnswer} from '../Utils/api'
 import {showLoading, hideLoading} from 'react-redux-loading'
 
-export function handleInitialData(){
+export function handleInitialData() {
+  
   return (dispatch) => {
+
     return getInitialData().then(({users, questions}) => {
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
     })
+
   }
 }
 
-export function handleAddQuestion(question){
+export function handleAddQuestion(question) {
 
   return (dispatch, getState) => {
     dispatch(showLoading())
-    const {authedUser} = getState() 
+    const {authedUser} = getState()
 
     return saveQuestion(question)
     .then((question) => {
@@ -31,15 +34,17 @@ export function handleAddQuestion(question){
 
 }
 
-export function handleQuestionAnswer(info){
+export function handleQuestionAnswer(info) {
 
     return (dispatch) => {
       dispatch(showLoading())
+
       return saveQuestionAnswer(info).then(() => {
         dispatch(questionAnswer(info))
         dispatch(saveUserAnswer(info))
         dispatch(hideLoading())
       })
+
     }
 
 }

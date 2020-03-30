@@ -4,26 +4,29 @@ import {connect} from 'react-redux'
 
 
 class LeaderBoard extends Component {
-    render(){
+
+    render() {
         return(
 
             <div style={{marginTop:'5%'}}>
-                {this.props.usersArray.map((user) => 
+
+                {this.props.usersArray.map((user) =>
                     <Board userAvatar={user.avatarURL}
-                           key={user.id} 
+                           key={user.id}
                            answered={Object.keys(user.answers).length}
                            created={user.questions.length}
                            name={user.name} />
                 )}
+
             </div>
 
-            
         )
     }
 }
 
 function mapStateToProps({users}){
     const usersArray = Object.keys(users).map((u) => users[u])
+
     let c = 0;
     while(c < usersArray.length){
         for(let i=1; i< usersArray.length; i++){
@@ -36,10 +39,7 @@ function mapStateToProps({users}){
             }
         }
         c++
-    } 
-
-    console.log(usersArray)
-    
+    }
 
     return {
         usersArray
