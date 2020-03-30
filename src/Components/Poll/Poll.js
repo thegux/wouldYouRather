@@ -11,7 +11,7 @@ class Poll extends Component {
             <StyledPoll>
                   <img
                     src={this.props.userAvatar}
-                    alt={this.props.userName + 'picture'}/>
+                    alt={this.props.userName + "'s avatar'"}/>
 
                     <StyledPollContent>
                         <h4>Results</h4>

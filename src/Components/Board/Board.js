@@ -10,7 +10,7 @@ export default class Board extends Component {
 
                     <img
                             src={this.props.userAvatar}
-                            alt={this.props.name + ' avatar'}/>
+                            alt={this.props.name + " avatar"}/>
 
                     <div>
                         <h3>{this.props.name}</h3>

@@ -45,7 +45,7 @@ class QuestionToAnswer extends Component {
                 <StyledQuestionContent>
                     <img
                         src={this.props.userAvatar}
-                        alt={this.props.userName + 'picture'}/>
+                        alt={this.props.userName + "'s avatar'"}/>
 
                     <StyledQuestionText>
                         <h4>Would you rather?</h4>

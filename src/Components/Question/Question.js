@@ -19,7 +19,7 @@ class Question extends Component {
 
                     <img
                         src={this.props.authorAvatar}
-                        alt={this.props.author + ' logo'}/>
+                        alt={this.props.author + "'s avatar"}/>
 
                     <StyledQuestionText>
                         <h5>Would you rather</h5>
