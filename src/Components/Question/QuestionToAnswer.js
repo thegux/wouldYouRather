@@ -48,7 +48,7 @@ class QuestionToAnswer extends Component {
                         alt={this.props.userName + "'s avatar'"}/>
 
                     <StyledQuestionText>
-                        <h4>Would you rather?</h4>
+                        <h4>Would you rather</h4>
                         <Form>
 
                             <Form.Group as={Row}>

@@ -17,7 +17,7 @@ The Login component fetches users from the store using mapStateToProps and popul
 
 The Question Container component fetches the authedStore from the store, and all the questions, filtering the questions the user has answered or the questions the user hasn't answered. It is also responsible for setting up a specific route (a question id) for each question.
 
-The PollorAnswer component fetches questions, the authedUser, and the question's id from the route. It then checks if the question exists (in case someone tries to type in the address bar an id that doesn't exist), and if the question was answered or not. If the user has answered, the question's poll is rendered, if the user hasn't answered then the QuestionToAnswer component is rendered and the user has to answer the question.
+The PollOrAnswer component fetches questions, the authedUser, and the question's id from the route. It then checks if the question exists (in case someone tries to type in the address bar an id that doesn't exist), and if the question was answered or not. If the user has answered, the question's poll is rendered, if the user hasn't answered then the QuestionToAnswer component is rendered and the user has to answer the question.
 
 The LeaderBoard component fetches the users and displays them by descending order of their score.
 
