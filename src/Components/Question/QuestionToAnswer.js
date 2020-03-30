@@ -12,7 +12,7 @@ class QuestionToAnswer extends Component {
         super(props)
         this.handleAnswer = this.handleAnswer.bind(this)
         this.saveQuestionAnswer = this.saveQuestionAnswer.bind(this)
-        this.style={
+        this.state={
             option: '',
         }
     }
@@ -27,7 +27,9 @@ class QuestionToAnswer extends Component {
         const qid = this.props.qid
         const answer = this.state.option
         const info = {authedUser, qid, answer}
-        this.props.dispatch(handleQuestionAnswer(info))
+        if(answer !== ''){
+          this.props.dispatch(handleQuestionAnswer(info))
+        } else{ alert('You must choose one option')}
     }
 
     render(){
@@ -38,7 +40,7 @@ class QuestionToAnswer extends Component {
                 </StyledQuestionAuthor>
 
                 <StyledQuestionContent>
-                        <img 
+                        <img
                         src={this.props.userAvatar}
                         alt={this.props.userName + 'picture'}/>
 
@@ -64,16 +66,16 @@ class QuestionToAnswer extends Component {
                                 onChange={() => this.handleAnswer('optionTwo')}
                                 />
                             </Col>
-                            
+
                             </Form.Group>
 
                             <Link to={'/questions/'+ this.props.qid}><Button onClick={this.saveQuestionAnswer}>Vote</Button></Link>
 
                         </Form>
 
-                            
+
                     </StyledQuestionText>
-                    
+
                 </StyledQuestionContent>
 
             </StyledQuestion>
