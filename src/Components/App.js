@@ -7,6 +7,7 @@ import Login from './Login/Login';
 import QuestionContainer from './Question/QuestionContainer';
 import PollOrAnswer from './Question/PollOrAnswer'
 import LeaderBoard from './Board/LeaderBoard'
+import LoadingBar from 'react-redux-loading'
 import NewQuestion from './NewQuestion/NewQuestion'
 import {Container} from 'react-bootstrap'
 import Error from './404/Error'
@@ -25,6 +26,7 @@ class App extends Component {
       <Router>
 
       <Container fluid style={{ paddingLeft: 0, paddingRight: 0, backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.8),rgba(154, 231 , 251, 0.8))", minHeight: '100vh'}}>
+          <LoadingBar style={{ backgroundColor: 'blue'}} />
           <NavComponent/>
           <Switch>
 

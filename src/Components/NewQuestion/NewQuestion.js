@@ -2,9 +2,8 @@ import React, {Component} from 'react'
 import { Button } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {StyledNewQuestion} from './StyledNewQuestion'
-import {Link} from 'react-router-dom'
 import { handleAddQuestion } from '../../Actions/shared'
-
+import {withRouter} from 'react-router-dom'
 
 class NewQuestion extends Component {
 
@@ -23,7 +22,7 @@ class NewQuestion extends Component {
 
     saveQuestion(option1, option2){
         const question = {optionOneText: option1, optionTwoText: option2, author: this.props.authedUser}
-        this.props.dispatch(handleAddQuestion(question))
+        this.props.dispatch(handleAddQuestion(question)).then(this.props.history.push('/home'))
     }
 
     render(){
@@ -48,11 +47,10 @@ class NewQuestion extends Component {
                            onChange={(e) => this.handleOptionTwo(e.target.value)}
                            placeholder="Type second option's text here"/>
 
-                    <Link to='/home'>
+ 
                         <Button onClick={() => this.saveQuestion(this.state.option1, this.state.option2)}>
                             Submit
                         </Button>
-                    </Link>
 
             </StyledNewQuestion>
         )
@@ -65,4 +63,4 @@ function mapStateToProps({authedUser}){
     }
 }
 
-export default connect(mapStateToProps)(NewQuestion)
+export default withRouter(connect(mapStateToProps)(NewQuestion))

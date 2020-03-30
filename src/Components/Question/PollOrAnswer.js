@@ -61,7 +61,7 @@ function mapStateToProps({authedUser, questions, users}, props) {
                     total,
                     choice
                 }
-            } else {return {error: true}}
+        }
 
 
             return{
