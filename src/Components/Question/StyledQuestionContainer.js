@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
 export const StyledQuestionContainer = styled.div`
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
 `;
