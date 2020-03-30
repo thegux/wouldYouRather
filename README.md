@@ -21,4 +21,10 @@ The PollorAnswer component fetches questions, the authedUser, and the question's
 
 The LeaderBoard component fetches the users and displays them by descending order of their score.
 
-The NewQuestion component is responsible to add a new question to the store.   
+The NewQuestion component is responsible to add a new question to the store.
+
+## Image References
+
+React-Redux Logo: Noteworthy, The Journal Blog. Medium.
+Users' avatars: Icon Pond, Freepik, Flaticon.
+Error: Smashicons, Flaticon.
